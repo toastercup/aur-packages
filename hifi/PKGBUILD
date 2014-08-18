@@ -1,0 +1,37 @@
+# Maintainer: Alex Tharp <toastercup@gmail.com>
+
+pkgname=hifi-git
+pkgver=r15651.5ca2890
+pkgrel=1
+pkgdesc="Open, decentralized virtual worlds using sensors to control avatars and dynamically assigned devices as servers. (git - master)"
+arch=('i686' 'x86_64')
+url="https://highfidelity.io/"
+license=('Apache2')
+depends=(
+  'qt5>=5.2.0'
+  'glm>=0.9.5.2'
+  'openssl>=1.0.1g'
+  'freeglut>=2.8.0'
+  'zLib>=1.2.8'
+)
+makedepends=('git' 'cmake>=2.8.12.2')
+optdepends=('qxmpp: Enables text chat in the Interface client')
+conflicts=('hifi')
+provides=('hifi')
+source=("${pkgname}::git+https://github.com/highfidelity/hifi.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "${pkgname}"
+  cmake .
+}
+
+package() {
+  cd "${pkgname}"
+}
+
