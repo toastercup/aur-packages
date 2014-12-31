@@ -1,48 +1,59 @@
 # Maintainer: Alex Tharp <toastercup@gmail.com>
+# Issues: https://github.com/toastercup/aur-packages/tree/master/hifi
 
 pkgname=hifi-git
-pkgver=r15659.4b7208a
+pkgver=r20085.20d66d2
 pkgrel=1
 pkgdesc="Open, decentralized virtual worlds using sensors to control avatars and dynamically assigned devices as servers. (git - master)"
 arch=('i686' 'x86_64')
 url="https://highfidelity.io/"
 license=('Apache2')
+makedepends=('git' 'cmake>=2.8.12.2')
 depends=(
-  'qt5-base>=5.2.0'
-  'qt5-script>=5.2.0'
-  'qt5-tools>=5.2.0'
-  'qt5-multimedia>=5.2.0'
-  'qt5-svg>=5.2.0'
+  'qt5-base>=5.3.2'
+  'qt5-script>=5.3.2'
+  'qt5-tools>=5.3.2'
+  'qt5-multimedia>=5.3.2'
+  'qt5-svg>=5.3.2'
 
-  'glm>=0.9.5.2'
+  'glm>=0.9.5.4'
   'openssl>=1.0.1g'
+  'intel-tbb>=4.3'
   'freeglut>=2.8.0'
   'zlib>=1.2.8'
   'alsa-lib'
   'libxmu'
   'libxi'
   'jack'
+  'sdl2'
 )
-makedepends=('git' 'cmake>=2.8.12.2')
 optdepends=('qxmpp: Enables text chat in the Interface client')
 conflicts=('hifi')
 provides=('hifi')
-source=("${pkgname}::git+https://github.com/highfidelity/hifi.git")
-md5sums=('SKIP')
+_githifi=hifi
+_gitgverb=gverb
+source=("$_githifi::git+https://github.com/highfidelity/hifi.git"
+        "$_gitgverb::git+https://github.com/highfidelity/gverb.git")
+md5sums=('SKIP'
+         'SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_githifi"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${pkgname}"
+  ## Copy required gverb sources
+  cp -R -v "$_gitgverb/include" "$_gitgverb/src" "$_githifi/interface/external/gverb/"
+
+  cd "$_githifi"
   mkdir build && cd $_
   cmake ..
   make
 }
 
 package() {
-  cd "${pkgname}/build"
-}
+  cd "$_githifi/build"
 
+  ## Install
+}
