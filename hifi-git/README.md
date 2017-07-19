@@ -1,7 +1,7 @@
-hifi-interface-git
+hifi-git
 ============
 
 Open, decentralized virtual world using sensors to control avatars and dynamically assigned devices as servers.
-PKGBUILD to package the [High Fidelity](https://highfidelity.io/) virtual world client project.
+Provides the [High Fidelity](https://highfidelity.io/) virtual world project (client and servers).
 
 Builds from git (`master` branch)
