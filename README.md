@@ -3,7 +3,7 @@ aur-packages
 
 Some neato [PKGBUILDs](https://wiki.archlinux.org/index.php/PKGBUILD) for [Arch Linux](https://www.archlinux.org/) I've made available on [AUR](https://aur.archlinux.org/)
 
-* [coolvlviewer-bin](coolvlviewer-bin) - Provides [Cool VL Viewer](http://sldev.free.fr/), a third-party viewer for [Second Life](https://secondlife.com/) and [OpenSim](http://opensimulator.org) grids
+* [coolvlviewer](coolvlviewer), [coolvlviewer-bin](coolvlviewer-bin), [coolvlviewer-experimental](coolvlviewer-experimental), [coolvlviewer-experimental-bin](coolvlviewer-experimental-bin) - Provides [Cool VL Viewer](http://sldev.free.fr/), a third-party viewer for [Second Life](https://secondlife.com/) and [OpenSim](http://opensimulator.org) grids
 * [crowdin-cli-bin](crowdin-cli-bin) - Provides [crowdin-cli](https://support.crowdin.com/cli-tool/), a command line tool that allows you to manage and synchronize localization resources with your [Crowdin](https://crowdin.com/) project
 * [firestorm-beta-bin](firestorm-beta-bin) - Provides beta releases for [Firestorm Viewer](https://www.firestormviewer.org/), a third-party viewer for [Second Life](https://secondlife.com/) and [OpenSim](http://opensimulator.org) grids.
 * [hifi-git](hifi-git) - Provides the [High Fidelity](https://highfidelity.io/) virtual world project (client and servers)
